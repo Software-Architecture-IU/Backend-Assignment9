@@ -1,0 +1,59 @@
+services:
+
+  rabbitmq:
+    image: rabbitmq:4.0-management
+    env_file:
+      - .env
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD}
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648 consumer_timeout 36000000
+    volumes:
+      - ./rabbitmq/rabbitmq_runtime:/var/lib/rabbitmq
+      - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+      - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+    ports:
+      - 15672:15672
+      - 5672:5672
+
+  rest-api:
+    build:
+      context: ./rest-api
+    env_file:
+      - .env
+    environment:
+      - APP_ENVIRONMENT=docker
+    depends_on:
+      - rabbitmq
+    ports:
+      - 8080:8080
+
+  filter-service:
+    build:
+      context: ./filter-service
+    env_file:
+      - .env
+    environment:
+      - APP_ENVIRONMENT=docker
+    depends_on:
+      - rabbitmq
+
+  screaming-service:
+    build:
+      context: ./screaming-service
+    env_file:
+      - .env
+    environment:
+      - APP_ENVIRONMENT=docker
+    depends_on:
+      - rabbitmq
+
+  publish-service:
+    build:
+      context: ./publish-service
+    env_file:
+      - .env
+    environment:
+      - APP_ENVIRONMENT=docker
+    depends_on:
+      - rabbitmq

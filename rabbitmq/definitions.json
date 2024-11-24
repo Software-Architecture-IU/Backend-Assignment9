@@ -1,0 +1,50 @@
+{
+  "queues": [
+    {
+      "name": "rest_api--filter_service--queue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "filter_service--screaming_service--queue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    },
+    {
+      "name": "screaming_service--publish_service--queue",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {}
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "users": [
+    {
+      "name": "rabbit_user",
+      "password_hash": "Mt3U1otjb4xGkDSkSzAiJ6uX+fi8ZFne62GsDcHLjUNwF+Ra",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": [
+        "administrator"
+      ],
+      "limits": {}
+    }
+  ],
+  "permissions": [
+    {
+      "user": "rabbit_user",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "local": {
+    "rabbitmq": {
+      "host": "localhost",
+      "port": "5672",
+      "queue-to-consume": "filter_service--screaming_service--queue",
+      "queue-to-produce": "screaming_service--publish_service--queue"
+    }
+  },
+  "docker": {
+    "rabbitmq": {
+      "host": "rabbitmq",
+      "port": "5672",
+      "queue-to-consume": "filter_service--screaming_service--queue",
+      "queue-to-produce": "screaming_service--publish_service--queue"
+    }
+  },
+  "logging": {
+    "logging_level": "INFO",
+    "logging_format": "'%(asctime)s | %(levelname)s | %(message)s'"
+  }
+}

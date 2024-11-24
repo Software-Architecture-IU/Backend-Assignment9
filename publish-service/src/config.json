@@ -1,0 +1,33 @@
+{
+  "local": {
+    "rabbitmq": {
+      "host": "localhost",
+      "port": "5672",
+      "queue-to-consume": "screaming_service--publish_service--queue"
+    }
+  },
+  "docker": {
+    "rabbitmq": {
+      "host": "rabbitmq",
+      "port": "5672",
+      "queue-to-consume": "screaming_service--publish_service--queue"
+    }
+  },
+  "logging": {
+    "logging_level": "INFO",
+    "logging_format": "'%(asctime)s | %(levelname)s | %(message)s'"
+  },
+  "email_data": {
+    "email": {
+      "server": "mail.innopolis.ru",
+      "port": 587,
+      "subject": "IU SA Assignment #9",
+      "team_members": [
+        "a.mukhutdinov@innopolis.university",
+        "m.korinenko@innopolis.university",
+        "d.nikulin@innopolis.university",
+        "m.kamenetskii@innopolis.university"
+      ]
+    }
+  }
+}
