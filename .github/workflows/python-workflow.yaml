@@ -23,4 +23,7 @@ jobs:
       - name: Run pylint
         id: pylint
         run: |
-          pylint **/*.py
+          pylint filter-service/**/*.py
+          pylint rest-api/**/*.py
+          pylint screaming-service/**/*.py
+          pylint publish-service/**/*.py
