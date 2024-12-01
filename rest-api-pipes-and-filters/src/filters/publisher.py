@@ -1,6 +1,5 @@
-from multiprocessing import Queue
+from multiprocessing import Process, Queue
 from schemas import PostUserMessage
-from base import BaseFilter
 import logging
 import smtplib
 from email.mime.multipart import MIMEMultipart
@@ -39,13 +38,13 @@ def format_json_to_msg(jsn: json) -> str:
     return string
 
 
-class Publisher(BaseFilter):
-    def __init__(self, input: Queue[PostUserMessage]) -> None:
+class Publisher(Process):
+    def __init__(self, input: Queue) -> None:
         super().__init__()
         self.input = input
 
     def process(self, body: PostUserMessage):
-        body = json.loads(body.decode('utf-8'))
+        body = json.loads(body.model_dump_json())
         logging.info(f'Received message {body}')
         brothers = ["a.mukhutdinov@innopolis.university",
                     "m.korinenko@innopolis.university",
@@ -55,3 +54,10 @@ class Publisher(BaseFilter):
         send_email('mail.innopolis.ru', 587, os.getenv('EMAIL_SENDER'),
                    os.getenv('EMAIL_PASSWORD'),
                    brothers, "IU SA Assignment #9", format_json_to_msg(body))
+
+    def run(self) -> None:
+        while True:
+            body = self.input.get()
+            if body is None:
+                break
+            self.process(body)

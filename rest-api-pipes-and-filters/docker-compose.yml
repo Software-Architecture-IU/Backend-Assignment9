@@ -1,0 +1,11 @@
+services:
+
+  rest-api:
+    build:
+      context: ./
+    env_file:
+      - .env
+    environment:
+      - APP_ENVIRONMENT=docker
+    ports:
+      - 8011:8080

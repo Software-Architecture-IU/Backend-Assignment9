@@ -1,4 +1,4 @@
-from base import BaseFilter
+from .base import BaseFilter
 from schemas import PostUserMessage
 
 
