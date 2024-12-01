@@ -1,11 +1,8 @@
 from fastapi import APIRouter, HTTPException
-
-from rabbitmq import rabbitmq_producer
 from schemas import PostUserMessage
+from main import g_Processes
 
 router = APIRouter(prefix="")
-
-producer = rabbitmq_producer
 
 
 @router.post("/message")
@@ -19,7 +16,7 @@ async def post_message(body: PostUserMessage) -> None:
     if is_empty(msg):
         raise HTTPException(404, f'Message {msg} not found')
 
-    producer.publish_message(body.json())
+    g_Processes[0].input.put(body)
 
 
 def is_empty(string: str) -> bool:
