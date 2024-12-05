@@ -41,4 +41,10 @@ request processing and prints an average.
 In order to start performance test, needed to provide `.env` file with `PERFORMANCE_TEST=true` variable.
 Both services can be started from the same .sh file
 
+### Results interpretation
+
+As one can see from the `.logs` file, the implementation of system with pipes-and-filters is insignificantly faster than RabbitMQ one. This can be a consequence of direct usage of IPC primitives instead of web-services (RabbitMQ).
+
+However, results can be understood in other way. The implementation via RabbitMQ is slightly inferior in performance to the implementation via pipes-and-filters. But at the same time it provides much more flexibility and scalability through easy deployment of new queues, connection to them, replication. Therefore, this option is more preferable in the industry.
+
 
