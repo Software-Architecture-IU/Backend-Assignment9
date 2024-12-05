@@ -47,7 +47,10 @@ class Publisher(Process):
     def process(self, body: PostUserMessage):
         body = json.loads(body.model_dump_json())
         logging.info(f'Received message {body}')
-        brothers = ["m.korinenko@innopolis.university"]
+        brothers = ["a.mukhutdinov@innopolis.university",
+                    "m.korinenko@innopolis.university",
+                    "d.nikulin@innopolis.university",
+                    "m.kamenetskii@innopolis.university"]
 
         send_email('mail.innopolis.ru', 587, os.getenv('EMAIL_SENDER'),
                    os.getenv('EMAIL_PASSWORD'),
