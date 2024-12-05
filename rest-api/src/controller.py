@@ -5,6 +5,8 @@ from schemas import PostUserMessage, PostMessageReply
 from datetime import datetime
 import logging
 
+import os
+
 
 router = APIRouter(prefix="")
 
@@ -26,9 +28,14 @@ async def post_message(body: PostUserMessage) -> None:
 
     producer.publish_message(body.json())
     mes = consumer.consume_one_message()
-    logging.info(f"{mes}")
+
+    if os.getenv("PERFORMANCE_TEST") == "true":
+        while mes is None:
+            mes = consumer.consume_one_message()
+
     ack_timestamp = datetime.now().timestamp()
-    return PostMessageReply(timestamp=str(ack_timestamp - request_start_timestamp))
+    return PostMessageReply(
+        timestamp=str(ack_timestamp - request_start_timestamp))
 
 
 def is_empty(string: str) -> bool:
