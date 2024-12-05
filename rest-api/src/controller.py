@@ -3,7 +3,6 @@ from fastapi import APIRouter, HTTPException
 from rabbitmq import rabbitmq_producer, rabbitmq_consumer
 from schemas import PostUserMessage, PostMessageReply
 from datetime import datetime
-import logging
 
 import os
 
