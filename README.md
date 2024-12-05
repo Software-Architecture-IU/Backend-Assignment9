@@ -38,4 +38,7 @@ successfull processing of a request. It is enabled only in performance testing m
 sends several messages to `/message` endpoint. During all the process it measures total time required for
 request processing and prints an average.
 
+In order to start performance test, needed to provide `.env` file with `PERFORMANCE_TEST=true` variable.
+Both services can be started from the same .sh file
+
 
