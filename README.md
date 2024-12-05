@@ -3,6 +3,8 @@
 In this assignment we implemented event-driven system using pipes-and-filters pattern
 and message brokers (in this case, RabbitMQ).
 
+[DEMO VIDEO](https://www.youtube.com/watch?v=28hK_swa5Bk)
+
 ## Implementation on top of pipes-and-filters
 
 The implementation of pipes-and-filters is in the `rest-api-pipes-and-filters`
