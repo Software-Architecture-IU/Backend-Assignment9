@@ -18,10 +18,11 @@ for ((i=1; i<=test_count; i++)); do
     elapsed_time=$(echo "$end_time - $start_time" | bc)
     total_time=$(echo "$total_time + $elapsed_time" | bc)
 
-    echo "Request $i: Time: $elapsed_time seconds"
+    echo -e "Request $i: Time: $elapsed_time seconds\n"
 done
 
 echo ""
 average_time=$(echo "$total_time / $test_count" | bc -l)
 echo "Average time: $average_time seconds"
 
+docker compose down
