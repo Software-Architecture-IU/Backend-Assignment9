@@ -1,0 +1,73 @@
+Backend-Assignment9$ bash performance-test.sh 
+[+] Building 0.9s (31/31) 
+
+Wait a little (20 seconds)
+{"timestamp":"1.926102876663208"}
+Request 1: Time: 1.937927622 seconds
+{"timestamp":"2.0343728065490723"}
+Request 2: Time: 2.044090219 seconds
+{"timestamp":"7.258516073226929"}
+Request 3: Time: 7.267617778 seconds
+{"timestamp":"2.292804002761841"}
+Request 4: Time: 2.302135664 seconds
+{"timestamp":"2.3918697834014893"}
+Request 5: Time: 2.401032014 seconds
+{"timestamp":"7.052361011505127"}
+Request 6: Time: 7.061768210 seconds
+{"timestamp":"1.932676076889038"}
+Request 7: Time: 1.941913673 seconds
+{"timestamp":"2.239187002182007"}
+Request 8: Time: 2.250366638 seconds
+{"timestamp":"2.3400399684906006"}
+Request 9: Time: 2.348124680 seconds
+{"timestamp":"7.15618896484375"}
+Request 10: Time: 7.164747061 seconds
+{"timestamp":"7.152431964874268"}
+Request 11: Time: 7.162027088 seconds
+{"timestamp":"1.8303370475769043"}
+Request 12: Time: 1.838883371 seconds
+{"timestamp":"2.4450409412384033"}
+Request 13: Time: 2.454184450 seconds
+{"timestamp":"7.084085941314697"}
+Request 14: Time: 7.093623335 seconds
+{"timestamp":"2.3112869262695312"}
+Request 15: Time: 2.319445635 seconds
+{"timestamp":"2.3422060012817383"}
+Request 16: Time: 2.351811292 seconds
+{"timestamp":"2.240403890609741"}
+Request 17: Time: 2.250274386 seconds
+{"timestamp":"2.1303839683532715"}
+Request 18: Time: 2.141795652 seconds
+{"timestamp":"2.444709062576294"}
+Request 19: Time: 2.453764138 seconds
+{"timestamp":"2.34184193611145"}
+Request 20: Time: 2.350947982 seconds
+
+Average time: 3.45682404440000000000 seconds
+
+
+Backend-Assignment9/rest-api-pipes-and-filters$ bash performance-test.sh 
+
+Wait a little (5 seconds)
+Request 1: Time: 2.335411052 seconds
+Request 2: Time: 2.495262111 seconds
+Request 3: Time: 1.865011551 seconds
+Request 4: Time: 1.853509088 seconds
+Request 5: Time: 2.494089831 seconds
+Request 6: Time: 6.692523946 seconds
+Request 7: Time: 3.175924096 seconds
+Request 8: Time: 7.031071951 seconds
+Request 9: Time: 2.069195428 seconds
+Request 10: Time: 7.261461674 seconds
+Request 11: Time: 1.938695332 seconds
+Request 12: Time: 2.140210789 seconds
+Request 13: Time: 2.242920131 seconds
+Request 14: Time: 2.548601119 seconds
+Request 15: Time: 7.063727181 seconds
+Request 16: Time: 2.652870605 seconds
+Request 17: Time: 3.366893103 seconds
+Request 18: Time: 2.658712481 seconds
+Request 19: Time: 2.129742947 seconds
+Request 20: Time: 2.262005228 seconds
+
+Average time: 3.31389198220000000000 seconds
