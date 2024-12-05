@@ -39,21 +39,21 @@ def format_json_to_msg(jsn: json) -> str:
 
 
 class Publisher(Process):
-    def __init__(self, input: Queue) -> None:
+    def __init__(self, input: Queue, ack: Queue) -> None:
         super().__init__()
         self.input = input
+        self.ack = ack
 
     def process(self, body: PostUserMessage):
         body = json.loads(body.model_dump_json())
         logging.info(f'Received message {body}')
-        brothers = ["a.mukhutdinov@innopolis.university",
-                    "m.korinenko@innopolis.university",
-                    "d.nikulin@innopolis.university",
-                    "m.kamenetskii@innopolis.university"]
+        brothers = []
 
         send_email('mail.innopolis.ru', 587, os.getenv('EMAIL_SENDER'),
                    os.getenv('EMAIL_PASSWORD'),
                    brothers, "IU SA Assignment #9", format_json_to_msg(body))
+
+        self.ack.put(True)
 
     def run(self) -> None:
         while True:

@@ -3,14 +3,16 @@
     "rabbitmq": {
       "host": "localhost",
       "port": "5672",
-      "queue-to-consume": "screaming_service--publish_service--queue"
+      "queue-to-consume": "screaming_service--publish_service--queue",
+      "queue-to-produce": "publish_service--rest_service--queue"
     }
   },
   "docker": {
     "rabbitmq": {
       "host": "rabbitmq",
       "port": "5672",
-      "queue-to-consume": "screaming_service--publish_service--queue"
+      "queue-to-consume": "screaming_service--publish_service--queue",
+      "queue-to-produce": "publish_service--rest_service--queue"
     }
   },
   "logging": {
@@ -23,10 +25,7 @@
       "port": 587,
       "subject": "IU SA Assignment #9",
       "team_members": [
-        "a.mukhutdinov@innopolis.university",
-        "m.korinenko@innopolis.university",
-        "d.nikulin@innopolis.university",
-        "m.kamenetskii@innopolis.university"
+
       ]
     }
   }
