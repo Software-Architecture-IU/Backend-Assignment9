@@ -1,3 +1,5 @@
+import os
+
 from fastapi import APIRouter, HTTPException
 from schemas import PostUserMessage
 
@@ -11,7 +13,7 @@ from filters.base import BaseFilter
 
 
 g_Processes: tuple[BaseFilter]
-
+acker = Queue()
 
 @asynccontextmanager
 async def prepare_filters(app: FastAPI):
@@ -21,9 +23,10 @@ async def prepare_filters(app: FastAPI):
     screamer_input = Queue()
     publisher_input = Queue()
 
+
     filter = Filter(filter_input, outputs=[screamer_input])
     screamer = Screamer(screamer_input, outputs=[publisher_input])
-    publisher = Publisher(publisher_input)
+    publisher = Publisher(publisher_input, acker)
 
     g_Processes = (filter, screamer, publisher)
     for process in g_Processes:
@@ -52,6 +55,9 @@ async def post_message(body: PostUserMessage) -> None:
         raise HTTPException(404, f'Message {msg} not found')
 
     g_Processes[0].input.put(body)
+    if os.getenv("PERFORMANCE_TEST") == "true":
+        acker.get()
+
 
 
 def is_empty(string: str) -> bool:
